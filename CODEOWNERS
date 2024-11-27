@@ -1,0 +1,10 @@
+# Ensure that contributors for downstream dependencies get notified
+# cf. https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Note that being a "code owner" is not indicative of any other formal
+# relationship to OpenPulse (beyond having write access for the repo)
+# or the OpenQASM technical steering committee. Perhaps a more
+# appropriate name would be "principal code reviewer".
+
+# Global owners, notify unless a more specific match occurs
+* @aspcompiler @jcjaskula-aws
