@@ -43,6 +43,7 @@ from openqasm3.parser import (
     span,
     QASMNodeVisitor,
     _raise_from_context,
+    _visit_identifier,
     parse as parse_qasm3,
 )
 from openqasm3.visitor import QASMVisitor
@@ -193,6 +194,12 @@ class OpenPulseNodeVisitor(openpulseParserVisitor):
             return openpulse_ast.CalibrationBlock(
                 body=[self.visit(statement) for statement in ctx.openpulseStatement()]
             )
+
+    def visitExternFrameStatement(self, ctx: openpulseParser.OpenpulseStatementContext):
+        return openpulse_ast.ExternFrameStatement(name=_visit_identifier(ctx.Identifier()))
+
+    def visitExternPortStatement(self, ctx: openpulseParser.OpenpulseStatementContext):
+        return openpulse_ast.ExternPortStatement(name=_visit_identifier(ctx.Identifier()))
 
     def visitScalarType(self, ctx: openpulseParser.ScalarTypeContext):
         if ctx.WAVEFORM() or ctx.PORT() or ctx.FRAME():

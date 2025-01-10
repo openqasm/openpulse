@@ -399,9 +399,11 @@ def test_permissive_parsing(capsys):
             port xy_port;
             port tx_port;
             port rx_port;
+            extern port cx_port;
             frame xy_frame = newframe(xy_port, 3714500000.0, 0);
             frame tx_frame = newframe(tx_port, 7883050000.0, 0);
             frame rx_frame = newframe(rx_port, 7883050000.0, 0);
+            extern frame cx_frame;
             waveform rabi_pulse_wf = gaussian(1e-07, 2.5e-08, 1.0, 0.0);
             waveform readout_waveform_wf = constant(5e-06, 0.03);
             waveform readout_kernel_wf = constant(5e-06, 1.0);
